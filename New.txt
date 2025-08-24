@@ -1,0 +1,61 @@
+搜索题的 trick：注意状态数（可用Hash）
+
+冒泡排序的特性（逆序对数量变化）
+
+猫树
+
+线段树维护历史版本信息
+
+带权并查集动态判二分图
+
+二分图博弈 https://mem.ac/oi/algorithm/bipartite-graph-game/
+
+XOR Hashing 定理 https://www.luogu.com.cn/problem/P10778
+
+Boruvka 算法 及 应用场景
+
+耳分解
+
+一道根号分治的题
+
+树上常用（离线）trick https://www.luogu.com.cn/problem/P4211
+
+长链剖分优化 DP（dep 域意义上的 DSU on Tree） https://www.cnblogs.com/zhoushuyu/p/9468669.html
+
+四毛子算法 https://www.cnblogs.com/whx1003/p/13996517.html
+
+tarjan 离线求 LCA  长链剖分求 LCA
+
+点分树
+
+非常特殊（偏）的一道（类）题 https://www.luogu.com.cn/problem/P5659
+
+虚树
+
+树套树
+
+动态 DP
+
+邻项交换证明贪心
+
+同余最短路
+
+DP trick：注意 有效转移的个数 不做无效转移
+
+wqs 二分
+
+李超线段树
+
+要维护一些奇怪的东西，首先想到分块
+
+kruskal 重构树
+
+线性代数（行列式）
+
+矩乘 trick：有时候矩阵乘矩阵 转换为 先乘一个向量 再... 于是O(n^2)
+
+BSGS
+
+连续段 DP
+
+FHQ Treap
