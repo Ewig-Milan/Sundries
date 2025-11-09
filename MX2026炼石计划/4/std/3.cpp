@@ -66,6 +66,8 @@ void fakemain () {
 }
 
 int main () {
+  freopen("toptrees.in", "r", stdin);
+  freopen("toptrees.out", "w", stdout);
   cin.tie(0)->sync_with_stdio(0);
   fakemain();
   return 0; 

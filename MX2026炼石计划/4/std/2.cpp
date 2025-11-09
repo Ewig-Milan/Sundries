@@ -31,6 +31,8 @@ void updatemn(int x) {
   hd[x] = p;
 }
 signed main() {
+  freopen("heap.in", "r", stdin);
+  freopen("heap.out", "w", stdout);
   cin.tie(nullptr)->sync_with_stdio(false);
   cin >> n >> seed;
   for (int i = 1; i <= n; ++i) {

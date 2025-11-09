@@ -1,30 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
-constexpr int N = 1e6 + 9, M = 1 << 20;
-int n, m, a[N], s[N], v[M], lb[N], rb[N];
-signed main() {
-  cin.tie(nullptr)->sync_with_stdio(false);
-  cin >> n >> m;
-  for (int i = 1; i <= n; ++i) cin >> a[i];
-  for (int i = n; i; --i) s[i] = s[i + 1] ^ a[i];
-  for (int i = 1; i <= n; ++i) {
-    int& j = lb[i] = i - 1;
-    while (j && a[j] <= a[i]) j = lb[j];
-  }
-  for (int i = n; i; --i) {
-    int& j = rb[i] = i + 1;
-    while (j <= n && a[j] < a[i]) j = rb[j];
-  }
-  for (int i = 1; i <= n; ++i) {
-    int l = lb[i], r = rb[i];
-    if (i - l <= r - i)
-      for (int j = max(l, i - a[i]) + 1; j <= min(i, r - a[i]); ++j)
-        ++v[s[j] ^ s[j + a[i]]];
-    else
-      for (int j = min(r, i + a[i]); j > max(i, l + a[i]); --j)
-        ++v[s[j] ^ s[j - a[i]]];
-  }
-  partial_sum(v, v + M, v);
-  for (int x; m; --m) cin >> x, cout << v[x] << '\n';
-  return cout << flush, 0;
+
+const int N = 1100000;
+
+int n, m;
+
+int A[N], prex[N];
+int L[N], R[N];
+int cnt[N];
+long long pres[N];
+
+int main() {
+
+    freopen("xorseg.in", "r", stdin);
+    freopen("xorseg.out", "w", stdout);
+
+    scanf("%d%d", &n, &m);
+    for(int i = 1; i <= n; i++) scanf("%d", &A[i]), prex[i] = prex[i - 1] ^ A[i];
+    deque<int> q;
+    for(int i = 1; i <= n; i++) {
+        while(!q.empty() && A[i] >= A[q.back()]) R[q.back()] = i - 1, q.pop_back();
+        if(!q.empty()) L[i] = q.back() + 1;
+        q.push_back(i);
+    }
+    for(int i = 1; i <= n; i++) L[i] ? 1 : (L[i] = 1), R[i] ? 1 : (R[i] = n);
+    for(int i = 1; i <= n; i++) {
+        for(int l = max(L[i], i - A[i] + 1); l + A[i] - 1 <= R[i] && l <= i; l++) {
+            int r = l + A[i] - 1;
+            cnt[prex[r] ^ prex[l - 1]]++;
+        }
+    }
+    pres[0] = cnt[0];
+    for(int i = 1; i < N; i++) pres[i] = pres[i - 1] + cnt[i];
+    while(m--) {
+        int a; scanf("%d", &a);
+        printf("%lld\n", pres[a]);
+    }
+    return 0;
 }

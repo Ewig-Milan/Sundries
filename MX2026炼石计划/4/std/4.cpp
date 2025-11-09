@@ -71,6 +71,8 @@ inline int solve(int x, int y, int z, bool ty, bool tz) {
   return ans;
 }
 signed main() {
+  freopen("lca.in", "r", stdin);
+  freopen("lca.out", "w", stdout);
   cin.tie(nullptr)->sync_with_stdio(false);
   cin >> n >> m;
   for (int i = 1, u, v, w; i < n; ++i) {
